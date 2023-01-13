@@ -1,4 +1,4 @@
-import matplotlib
+import tensorflow as tf
 
 # import the necessary packages
 from keras.preprocessing.image import ImageDataGenerator
@@ -22,9 +22,10 @@ import cv2
 import os
 
 # set the matplotlib backend so figures can be saved in the background
+import matplotlib
 matplotlib.use("Agg")
 
-
+print(tf.config.list_physical_devices('GPU'))
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
