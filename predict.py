@@ -9,10 +9,10 @@ import cv2
 ap = argparse.ArgumentParser()
 ap.add_argument("-m", "--model", default="model", help="path to trained serialized model")
 ap.add_argument("-l", "--label-bin", default="binarizer", help="path to  label binarizer")
-ap.add_argument("-i", "--input", default="input.mp4", help="path to our input video")
+ap.add_argument("-i", "--input", default="inputCarrBench.mp4", help="path to our input video")
 # [for above line] change default to the filename of the input video/image
 ap.add_argument("-o", "--output", default="output.avi", help="path to our output video")
-ap.add_argument("-s", "--size", type=int, default=128, help="size of queue for averaging")
+ap.add_argument("-s", "--size", type=int, default=256, help="size of queue for averaging")
 # [for above line] change default to 1 if using a still image as input, use 128 if video (may need to decrease if very short video)
 args = vars(ap.parse_args())
 
@@ -66,7 +66,7 @@ while True:
 
 
     # draw the activity on the output frame
-    text = "activity: {}".format(label)
+    text = "{}".format(label)
     cv2.putText(output, text, (35, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.25, (0, 255, 0), 5)
     # check if the video writer is None
     if writer is None:
