@@ -28,16 +28,11 @@ matplotlib.use("Agg")
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--dataset", required=True,
-    help="path to input dataset")
-ap.add_argument("-m", "--model", required=True,
-    help="path to output serialized model")
-ap.add_argument("-l", "--label-bin", required=True,
-    help="path to output label binarizer")
-ap.add_argument("-e", "--epochs", type=int, default=25,
-    help="# of epochs to train our network for")
-ap.add_argument("-p", "--plot", type=str, default="plot.png",
-    help="path to output loss/accuracy plot")
+ap.add_argument("-d", "--dataset", required=True, help="path to input dataset")
+ap.add_argument("-m", "--model", required=True, help="path to output serialized model")
+ap.add_argument("-l", "--label-bin", required=True, help="path to output label binarizer")
+ap.add_argument("-e", "--epochs", type=int, default=25, help="# of epochs to train our network for")
+ap.add_argument("-p", "--plot", type=str, default="plot.png", help="path to output loss/accuracy plot")
 args = vars(ap.parse_args())
 
 
@@ -78,8 +73,7 @@ lb = LabelBinarizer()
 labels = lb.fit_transform(labels)
 # partition the data into training and testing splits using 75% of
 # the data for training and the remaining 25% for testing
-(trainX, testX, trainY, testY) = train_test_split(data, labels,
-    test_size=0.25, stratify=labels, random_state=42)
+(trainX, testX, trainY, testY) = train_test_split(data, labels, test_size=0.25, stratify=labels, random_state=42)
 
 
 
@@ -130,8 +124,7 @@ for layer in baseModel.layers:
 # layers to being non-trainable)
 print("[INFO] compiling model...")
 opt = SGD(lr=1e-4, momentum=0.9, decay=1e-4 / args["epochs"])
-model.compile(loss="categorical_crossentropy", optimizer=opt,
-    metrics=["accuracy"])
+model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
 # train the head of the network for a few epochs (all other layers
 # are frozen) -- this will allow the new FC layers to start to become
 # initialized with actual "learned" values versus pure random
@@ -149,8 +142,7 @@ H = model.fit(
 # evaluate the network
 print("[INFO] evaluating network...")
 predictions = model.predict(x=testX.astype("float32"), batch_size=32)
-print(classification_report(testY.argmax(axis=1),
-    predictions.argmax(axis=1), target_names=lb.classes_))
+print(classification_report(testY.argmax(axis=1), predictions.argmax(axis=1), target_names=lb.classes_))
 # plot the training loss and accuracy
 N = args["epochs"]
 plt.style.use("ggplot")
