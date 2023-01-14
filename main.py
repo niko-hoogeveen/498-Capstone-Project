@@ -33,9 +33,9 @@ ap = argparse.ArgumentParser()
 # ap.add_argument("-d", "--dataset", required = True, help="path to input dataset")
 # first 3 used to look like that with required=true and no default
 ap.add_argument("-d", "--dataset", help="path to input dataset", default="data")
-ap.add_argument("-m", "--model", help="path to output serialized model", default="model")
-ap.add_argument("-l", "--label-bin", help="path to output label binarizer", default="binarizer")
-ap.add_argument("-e", "--epochs", type=int, default=500, help="# of epochs to train our network for")
+ap.add_argument("-m", "--model", help="path to output serialized model", default="model.model")
+ap.add_argument("-l", "--label-bin", help="path to output label binarizer", default="binarizer.pickle")
+ap.add_argument("-e", "--epochs", type=int, default=1000, help="# of epochs to train our network for")
 ap.add_argument("-p", "--plot", type=str, default="plot.png", help="path to output loss/accuracy plot")
 args = vars(ap.parse_args())
 

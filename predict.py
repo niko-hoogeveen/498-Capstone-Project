@@ -7,13 +7,13 @@ import pickle
 import cv2
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-m", "--model", default="model", help="path to trained serialized model")
-ap.add_argument("-l", "--label-bin", default="binarizer", help="path to  label binarizer")
-ap.add_argument("-i", "--input", default="inputCarrBench.mp4", help="path to our input video")
+ap.add_argument("-m", "--model", default="model.model", help="path to trained serialized model")
+ap.add_argument("-l", "--label-bin", default="binarizer.pickle", help="path to  label binarizer")
+ap.add_argument("-i", "--input", default="WorkoutFootageTest.mp4", help="path to our input video")
 # [for above line] change default to the filename of the input video/image
 ap.add_argument("-o", "--output", default="output.avi", help="path to our output video")
-ap.add_argument("-s", "--size", type=int, default=256, help="size of queue for averaging")
-# [for above line] change default to 1 if using a still image as input, use 128 if video (may need to decrease if very short video)
+ap.add_argument("-s", "--size", type=int, default=32, help="size of queue for averaging")
+# [for above line] change default to 1 if using a still image as input, use 128 if video (may need to decrease if very short video or if multiple workouts per video)
 args = vars(ap.parse_args())
 
 
