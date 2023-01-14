@@ -67,7 +67,7 @@ while True:
 
     # draw the activity on the output frame
     text = "{}".format(label)
-    cv2.putText(output, text, (50, 75), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3)
+    cv2.putText(output, text, (50, 75), cv2.FONT_HERSHEY_SIMPLEX, 1.25, (255, 0, 0), 3)
     # check if the video writer is None
     if writer is None:
         # initialize our video writer
